@@ -25,7 +25,7 @@
 
 TEXTFILELOGBLOCKBREAKS = true
 TEXTFILELOGBLOCKPLACES = true
-TEXTFILEBLOCKSTOQUEUE  = 20 -- Set to 1 for instant logging.
+TEXTFILEBLOCKSTOQUEUE  = 20 -- Set to 1 for instant logging. Increasing this will decrease lag (marginally) at the cost of less logs if the server rashes.
 
 -- Globals
 
