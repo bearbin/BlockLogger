@@ -25,7 +25,7 @@
 
 TEXTFILELOGBLOCKBREAKS = true
 TEXTFILELOGBLOCKPLACES = true
-TEXTFILEBLOCKSTOQUEUE  = 200 -- Set to 1 for instant logging.
+TEXTFILEBLOCKSTOQUEUE  = 20 -- Set to 1 for instant logging.
 
 -- Globals
 
@@ -41,16 +41,16 @@ function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 		return
 	end
 	TEXTFILEBLOCKSCOUNTER = TEXTFILEBLOCKSCOUNTER + 1
-	QUEUE.insert(tostring(os.time)..","..breakPlace..","..X..","..Y..","..Z..","..player..","..block.."\n")
-	if TEXTFILEBLOCKSCOUNTER = TEXTFILEBLOCKSTOQUEUE then
+	table.insert(QUEUE, os.time()..","..breakPlace..","..X..","..Y..","..Z..","..player..","..block.."\n")
+	if TEXTFILEBLOCKSCOUNTER >= TEXTFILEBLOCKSTOQUEUE then
 		TEXTFILEForceWrite()
 	end 
 end
 
 function TEXTFILEForceWrite()
 	local logFile = io.open('Plugins/BlockLogger/blocks.log', 'a')
-	for i, v in ipairs(QUEUE) do
-		logFile:write(v.value)
+	for key, value in pairs(QUEUE) do
+		logFile:write(value)
 	end
 	logFile:close()
 end

@@ -20,8 +20,6 @@
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 function OnBlockPlace( Player, X, Y, Z, blockface, newBlock )
-	if LOGBLOCKS == true then
-		WriteLog(1, X, Y, Z, Player:GetName(), newBlock)
-	end
+	_G[LOGFORMAT.."WriteBlockLog"](1, X, Y, Z, Player:GetName(), newBlock)
 	return false
 end

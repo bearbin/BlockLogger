@@ -20,8 +20,6 @@
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 function OnBlockDig( Player, X, Y, Z, blockface, status, oldBlock )
-	if LOGBLOCKS == true then
-		WriteLog(0, X, Y, Z, Player:GetName(), oldBlock)
-	end
+	_G[LOGFORMAT.."WriteBlockLog"](0, X, Y, Z, Player:GetName(), oldBlock)
 	return false
 end
