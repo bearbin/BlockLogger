@@ -35,10 +35,11 @@ QUEUE = {}
 function Initialize( Plugin )
 
         PLUGIN = Plugin
-	LOGPREFIX = "["..Plugin:GetName().."]"        
 
         Plugin:SetName( "BlockLogger" )
         Plugin:SetVersion( 1 )
+
+	LOGPREFIX = "["..Plugin:GetName().."]"        
 
         PluginManager = cRoot:Get():GetPluginManager()
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_BLOCK_PLACE)
