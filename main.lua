@@ -23,7 +23,7 @@
 -- Configuration
 
 LOGFORMAT = "TEXTFILE"
-DEBUGMODE = true
+DEBUGMODE = false
 
 -- Globals
 
