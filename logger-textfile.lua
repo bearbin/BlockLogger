@@ -43,14 +43,32 @@ function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 	TEXTFILEBLOCKSCOUNTER = TEXTFILEBLOCKSCOUNTER + 1
 	table.insert(QUEUE, os.time()..","..breakPlace..","..X..","..Y..","..Z..","..player..","..block.."\n")
 	if TEXTFILEBLOCKSCOUNTER >= TEXTFILEBLOCKSTOQUEUE then
+		if DEBUGMODE then
+			LOG( LOGPREFIX .. "Forcing Block Log Write" )
+		end
+		TEXTFILEBLOCKSCOUNTER = 0
 		TEXTFILEForceWrite()
 	end 
 end
 
 function TEXTFILEForceWrite()
+	if DEBUGMODE then
+		LOG( LOGPREFIX .. "Block Write Forced!" )
+	end
 	local logFile = io.open('Plugins/BlockLogger/blocks.log', 'a')
 	for key, value in pairs(QUEUE) do
 		logFile:write(value)
 	end
 	logFile:close()
+end
+
+function TEXTFILEFindBlock(X,Y,Z)
+	local readFile = {}
+	local logFile = io.open('Plugins/BlockLogger/blocks.log', 'r')
+	while true do
+	local line = io.read()
+		if line == nil then break end
+		table.insert(readFile, utils.split(line, ','))
+		LOG(utils.split(line, ','))
+	end
 end

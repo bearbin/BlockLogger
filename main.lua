@@ -23,6 +23,7 @@
 -- Configuration
 
 LOGFORMAT = "TEXTFILE"
+DEBUGMODE = true
 
 -- Globals
 
@@ -46,10 +47,16 @@ function Initialize( Plugin )
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_BLOCK_DIG)
         
 	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
-        return true
+        if DEBUGMODE then
+		LOG( LOGPREFIX .. "Debug mode is enabled." )
+	end
+	return true
 end
 
 function OnDisable()
+	if DEBUGMODE then
+		LOG( LOGPREFIX .. "Forcing Block Log Write!" )
+	end
 	_G[LOGFORMAT.."ForceWrite"]()
 	LOG( LOGPREFIX .. "Plugin Disabled!" )
 end
