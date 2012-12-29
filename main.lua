@@ -39,7 +39,7 @@ function Initialize( Plugin )
         Plugin:SetName( "BlockLogger" )
         Plugin:SetVersion( 1 )
 
-	LOGPREFIX = "["..Plugin:GetName().."]"        
+	LOGPREFIX = "["..Plugin:GetName().."] "        
 
         PluginManager = cRoot:Get():GetPluginManager()
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_BLOCK_PLACE)
@@ -51,5 +51,5 @@ end
 
 function OnDisable()
 	_G[LOGFORMAT.."ForceWrite"]()
-	LOG( LOGPREFIX .. " Plugin Disabled!" )
+	LOG( LOGPREFIX .. "Plugin Disabled!" )
 end
