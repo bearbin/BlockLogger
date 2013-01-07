@@ -34,6 +34,11 @@ TEXTFILEBLOCKSCOUNTER = 0
 function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 	-- breakPlace == 0 means a block was broken
 	-- breakPlace == 1 means a block was placed
+
+	if DEBUGMODE then
+		LOG(LOGPREFIX.."TEXTFILEWriteBlockLog() was called")
+	end
+
 	if breakPlace == 0 and TEXTFILELOGBLOCKBREAKS == false then
 		return
 	end

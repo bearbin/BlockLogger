@@ -21,5 +21,5 @@
 
 function OnPlayerPlacedBlock( Player, X, Y, Z, blockface, newBlock )
 	_G[LOGFORMAT.."WriteBlockLog"](1, X, Y, Z, Player:GetName(), newBlock)
-	return false
+	return
 end

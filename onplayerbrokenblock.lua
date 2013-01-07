@@ -21,5 +21,5 @@
 
 function OnPlayerBrokenBlock( Player, X, Y, Z, blockface, status, oldBlock )
 	_G[LOGFORMAT.."WriteBlockLog"](0, X, Y, Z, Player:GetName(), tostring(oldBlock))
-	return false
+	return
 end
