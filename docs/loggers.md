@@ -22,7 +22,7 @@ OnDisable()
 
 This also returns nothing. It is called when the server is shutting down and you might use it for stuff like closing SQL connections and forcing log writes.
 
-WriteBlockLog(breakPlace, X, Y, Z, player, block)
+WriteBlockLog(breakPlace, X, Y, Z, player, block, meta)
 -------------------------------------------------
 
 This should write (or queue) a block log. 
@@ -31,6 +31,7 @@ breakPlace is 0 on block break and 1 on place.
 X, Y and Z are the coords of the block broken or placed.
 player is the name of the player that did the breaking or placing.
 block _should_ be the id of the broken block (this isn't working yet).
+meta _should_ be the meta of the broken block.
 
 ForceWrite()
 ------------
