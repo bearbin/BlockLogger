@@ -19,7 +19,7 @@
 -- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function OnBlockPlace( Player, X, Y, Z, blockface, newBlock )
+function OnPlayerPlacedBlock( Player, X, Y, Z, blockface, newBlock )
 	_G[LOGFORMAT.."WriteBlockLog"](1, X, Y, Z, Player:GetName(), newBlock)
 	return false
 end
