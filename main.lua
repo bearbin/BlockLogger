@@ -47,9 +47,13 @@ function Initialize( Plugin )
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_BROKEN_BLOCK)
         
 	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
+
+	_G[LOGFORMAT.."Initialize"]()
+
         if DEBUGMODE then
 		LOG( LOGPREFIX .. "Debug mode is enabled." )
 	end
+
 	return true
 end
 

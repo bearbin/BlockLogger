@@ -33,6 +33,10 @@ TEXTFILEBLOCKSCOUNTER = 0
 
 -- Code Start
 
+function TEXTFILEInitialize()
+	LOG(LOGPREFIX.."TEXTFILE logger initialized.")
+end
+
 function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 	-- breakPlace == 0 means a block was broken
 	-- breakPlace == 1 means a block was placed
