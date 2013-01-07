@@ -44,7 +44,7 @@ function Initialize( Plugin )
 
         PluginManager = cRoot:Get():GetPluginManager()
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_PLACED_BLOCK)
-        PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_BROKE_BLOCK)
+        PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_BROKEN_BLOCK)
         
 	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
         if DEBUGMODE then
