@@ -31,6 +31,8 @@ TEXTFILEBLOCKSTOQUEUE  = 20 -- Set to 1 for instant logging. Increasing this wil
 
 TEXTFILEBLOCKSCOUNTER = 0
 
+-- Code Start
+
 function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 	-- breakPlace == 0 means a block was broken
 	-- breakPlace == 1 means a block was placed
