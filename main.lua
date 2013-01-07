@@ -29,7 +29,7 @@ DEBUGMODE = false
 
 PLUGIN = {}
 LOGPREFIX = ""
-QUEUE = {}
+LOGGERSPEC = 1
 
 -- Plugin Start
 
@@ -48,6 +48,11 @@ function Initialize( Plugin )
         
 	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
 
+	if not (_G[LOGFORMAT.."GetLoggerSpec"]() == LOGGERSPEC) then
+		LOG(LOGPREFIX.."Logger Specification mismatch, errors may result.")
+		LOG(LOGPREFIX.."Please update the logger you are using.")
+	end
+
 	_G[LOGFORMAT.."Initialize"]()
 
         if DEBUGMODE then
@@ -58,9 +63,6 @@ function Initialize( Plugin )
 end
 
 function OnDisable()
-	if DEBUGMODE then
-		LOG( LOGPREFIX .. "Forcing Block Log Write!" )
-	end
-	_G[LOGFORMAT.."ForceWrite"]()
+	_G[LOGFORMAT.."OnDisable"]()
 	LOG( LOGPREFIX .. "Plugin Disabled!" )
 end

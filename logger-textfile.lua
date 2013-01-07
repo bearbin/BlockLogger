@@ -30,11 +30,28 @@ TEXTFILEBLOCKSTOQUEUE  = 20 -- Set to 1 for instant logging. Increasing this wil
 -- Globals
 
 TEXTFILEBLOCKSCOUNTER = 0
+QUEUE = {}
 
 -- Code Start
 
+function TEXTFILEGetLoggerSpec()
+	return 1
+end
+
 function TEXTFILEInitialize()
 	LOG(LOGPREFIX.."TEXTFILE logger initialized.")
+	return
+end
+
+function TEXTFILEOnDisable()
+	if DEBUGMODE then
+		LOG(LOGPREFIX.."Disabling TEXTFILE logger, forcing block write.")
+	end
+	TEXTFILEForceWrite()
+	if DEBUGMODE then
+		LOG(LOGPREFIX.."Block log force written.")
+	end
+	return
 end
 
 function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
@@ -70,6 +87,7 @@ function TEXTFILEForceWrite()
 	for key, value in pairs(QUEUE) do
 		logFile:write(value)
 	end
+	QUEUE = {}
 	logFile:close()
 end
 
