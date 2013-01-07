@@ -54,7 +54,7 @@ function TEXTFILEOnDisable()
 	return
 end
 
-function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
+function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block, meta)
 	-- breakPlace == 0 means a block was broken
 	-- breakPlace == 1 means a block was placed
 
@@ -69,7 +69,7 @@ function TEXTFILEWriteBlockLog(breakPlace, X, Y, Z, player, block)
 		return
 	end
 	TEXTFILEBLOCKSCOUNTER = TEXTFILEBLOCKSCOUNTER + 1
-	table.insert(QUEUE, os.time()..","..breakPlace..","..X..","..Y..","..Z..","..player..","..block.."\n")
+	table.insert(QUEUE, os.time()..","..breakPlace..","..X..","..Y..","..Z..","..player..","..block..","..meta.."\n")
 	if TEXTFILEBLOCKSCOUNTER >= TEXTFILEBLOCKSTOQUEUE then
 		if DEBUGMODE then
 			LOG( LOGPREFIX .. "Forcing Block Log Write" )

@@ -19,7 +19,7 @@
 -- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 -- SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function OnPlayerBrokenBlock( Player, X, Y, Z, blockface, status, oldBlock )
-	_G[LOGFORMAT.."WriteBlockLog"](0, X, Y, Z, Player:GetName(), tostring(oldBlock))
-	return
+function OnPlayerBrokenBlock( Player, X, Y, Z, blockFace, oldBlock, blockMeta )
+	_G[LOGFORMAT.."WriteBlockLog"](0, X, Y, Z, Player:GetName(), tostring(oldBlock), tostring(blockMeta))
+	return false
 end
