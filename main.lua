@@ -45,8 +45,10 @@ function Initialize( Plugin )
         PluginManager = cRoot:Get():GetPluginManager()
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_PLACED_BLOCK)
         PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_BROKEN_BLOCK)
-        
-	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
+        PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_BREAKING_BLOCK)
+        PluginManager:AddHook(Plugin, cPluginManager.HOOK_PLAYER_PLACING_BLOCK)
+
+       	LOG( LOGPREFIX .. "Plugin v" .. Plugin:GetVersion() .. " Enabled!" )
 
 	if not (_G[LOGFORMAT.."GetLoggerSpec"]() == LOGGERSPEC) then
 		LOG(LOGPREFIX.."Logger Specification mismatch, errors may result.")
